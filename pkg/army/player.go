@@ -14,6 +14,9 @@ type Army struct {
 
 func (army Army) Attack() []int {
 	roll := util.RollDice(true)
+
+	sort.Sort(sort.Reverse(sort.IntSlice(roll)))
+
 	switch army.ArmySize {
 	case 0:
 		roll[0] = 0
@@ -26,8 +29,6 @@ func (army Army) Attack() []int {
 		roll[2] = 0
 	}
 
-	sort.Sort(sort.Reverse(sort.IntSlice(roll)))
-
 	roll = roll[0:2]
 
 	fmt.Printf("%s rolls: %v\n", army.Owner, roll)
@@ -36,6 +37,9 @@ func (army Army) Attack() []int {
 
 func (army Army) Defend() []int {
 	roll := util.RollDice(true)
+
+	sort.Sort(sort.Reverse(sort.IntSlice(roll)))
+
 	switch army.ArmySize {
 	case 0:
 		roll[0] = 0
@@ -47,8 +51,6 @@ func (army Army) Defend() []int {
 	default:
 		roll[2] = 0
 	}
-
-	sort.Sort(sort.Reverse(sort.IntSlice(roll)))
 
 	roll = roll[0:2]
 

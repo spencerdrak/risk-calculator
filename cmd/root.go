@@ -42,11 +42,11 @@ var rootCmd = &cobra.Command{
 
 		attacker := army.Army{
 			ArmySize: attackerSize,
-			Owner:    "Spencer",
+			Owner:    args[0],
 		}
 		defender := army.Army{
 			ArmySize: defenderSize,
-			Owner:    "John",
+			Owner:    args[2],
 		}
 		for attacker.ArmySize > 1 && defender.ArmySize > 0 {
 			rand.Seed(time.Now().UnixNano())
@@ -58,7 +58,7 @@ var rootCmd = &cobra.Command{
 			fmt.Println("-------------------------------------------")
 		}
 
-		fmt.Printf("Final Standings - Attacker: %d, Defender: %d", attacker.ArmySize, defender.ArmySize)
+		fmt.Printf("Final Standings - %s: %d, %s: %d", attacker.Owner, attacker.ArmySize, defender.Owner, defender.ArmySize)
 	},
 }
 

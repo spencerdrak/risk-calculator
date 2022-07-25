@@ -24,7 +24,7 @@ func CompareRolls(attackerRoll []int, defenderRoll []int) (RollComparison, error
 		attack := attackerRoll[i]
 		defense := defenderRoll[i]
 
-		if attack == 0 && defense == 0 {
+		if attack == 0 || defense == 0 {
 			continue
 		}
 
