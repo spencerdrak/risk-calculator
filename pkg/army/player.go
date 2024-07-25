@@ -12,6 +12,8 @@ type Army struct {
 	ArmySize int
 }
 
+var print_due bool = false
+
 func (army Army) Attack() []int {
 	roll := util.RollDice(true)
 
@@ -30,8 +32,9 @@ func (army Army) Attack() []int {
 	}
 
 	roll = roll[0:2]
-
-	fmt.Printf("%s rolls: %v\n", army.Owner, roll)
+	if print_due {
+		fmt.Printf("%s rolls: %v\n", army.Owner, roll)
+	}
 	return roll
 }
 
@@ -54,6 +57,8 @@ func (army Army) Defend() []int {
 
 	roll = roll[0:2]
 
-	fmt.Printf("%s rolls: %v\n", army.Owner, roll)
+	if print_due {
+		fmt.Printf("%s rolls: %v\n", army.Owner, roll)
+	}
 	return roll
 }

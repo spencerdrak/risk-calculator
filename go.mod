@@ -1,6 +1,6 @@
 module github.com/spencerdrak/risk-calculator
 
-go 1.18
+go 1.22
 
 require github.com/spf13/cobra v1.5.0
 

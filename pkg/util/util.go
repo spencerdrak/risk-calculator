@@ -3,6 +3,7 @@ package util
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 type RollComparison struct {
@@ -10,7 +11,10 @@ type RollComparison struct {
 	DefenderLoss int
 }
 
+var print_due bool = false
+
 func RollDice(attacker bool) []int {
+	rand.Seed(time.Now().UnixNano())
 	return []int{rand.Intn(6) + 1, rand.Intn(6) + 1, rand.Intn(6) + 1}
 }
 
@@ -35,7 +39,9 @@ func CompareRolls(attackerRoll []int, defenderRoll []int) (RollComparison, error
 		}
 	}
 
-	fmt.Printf("Attacker loses: %d, Defender loses: %d\n", output.AttackerLoss, output.DefenderLoss)
+	if print_due {
+		fmt.Printf("Attacker loses: %d, Defender loses: %d\n", output.AttackerLoss, output.DefenderLoss)
+	}
 
 	return output, nil
 }
